@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Source\\repos\\RedDogAdmin\\RedDogAdmin\\RedDogAdmin.csproj": {}
+    "C:\\Users\\Andre\\OneDrive\\Developer\\Documents\\GitHub\\GitHub2020\\RedDogAdmin\\RedDogAdmin\\RedDogAdmin.csproj": {}
   },
   "projects": {
-    "C:\\Source\\repos\\RedDogAdmin\\RedDogAdmin\\RedDogAdmin.csproj": {
+    "C:\\Users\\Andre\\OneDrive\\Developer\\Documents\\GitHub\\GitHub2020\\RedDogAdmin\\RedDogAdmin\\RedDogAdmin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Source\\repos\\RedDogAdmin\\RedDogAdmin\\RedDogAdmin.csproj",
+        "projectUniqueName": "C:\\Users\\Andre\\OneDrive\\Developer\\Documents\\GitHub\\GitHub2020\\RedDogAdmin\\RedDogAdmin\\RedDogAdmin.csproj",
         "projectName": "RedDogAdmin",
-        "projectPath": "C:\\Source\\repos\\RedDogAdmin\\RedDogAdmin\\RedDogAdmin.csproj",
+        "projectPath": "C:\\Users\\Andre\\OneDrive\\Developer\\Documents\\GitHub\\GitHub2020\\RedDogAdmin\\RedDogAdmin\\RedDogAdmin.csproj",
         "packagesPath": "C:\\Users\\Andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Source\\repos\\RedDogAdmin\\RedDogAdmin\\obj\\",
+        "outputPath": "C:\\Users\\Andre\\OneDrive\\Developer\\Documents\\GitHub\\GitHub2020\\RedDogAdmin\\RedDogAdmin\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Andre\\AppData\\Roaming\\NuGet\\NuGet.Config",

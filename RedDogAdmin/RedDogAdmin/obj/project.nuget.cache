@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TgSt9Ch2s9GGyp3CtzzDdUcim/iwXExaMFGcDe+gWN2S0kzY/rFQxt0XAptCzM+oZy8Bzd5SVpJwAVYiICNF5w==",
+  "dgSpecHash": "1D9rSK3FuL5R7KuUp4vvZw4ajsnRBDk/H0gSQTLhDx6gAjuoIz6w2EzQVgAteuhJo7G9pUzGWTxapvWeqyBxIQ==",
   "success": true,
-  "projectFilePath": "C:\\Source\\repos\\RedDogAdmin\\RedDogAdmin\\RedDogAdmin.csproj",
+  "projectFilePath": "C:\\Users\\Andre\\OneDrive\\Developer\\Documents\\GitHub\\GitHub2020\\RedDogAdmin\\RedDogAdmin\\RedDogAdmin.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andre\\.nuget\\packages\\blazortable\\1.7.2\\blazortable.1.7.2.nupkg.sha512",
     "C:\\Users\\Andre\\.nuget\\packages\\linqkit.core\\1.1.17\\linqkit.core.1.1.17.nupkg.sha512",

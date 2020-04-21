@@ -1,0 +1,15 @@
+﻿@page "/DeleteConfirmed"
+@inject NavigationManager NavigationManager
+
+<h1>Delete Confirmed</h1>
+User deleted!
+<br/>
+<button @onclick="ReturnBack">Return</button>
+@code {
+    public void ReturnBack()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+
+}

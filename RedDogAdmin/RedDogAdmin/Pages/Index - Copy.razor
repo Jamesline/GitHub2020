@@ -1,0 +1,59 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Identity
+@using BlazorTable
+@using RedDogAdmin.Areas.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IdentUtilService identUtilService
+
+<h1>User Admin</h1>
+@if (listme == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+<p>Selection Type:</p>
+<select class="form-control form-control-sm" @onchange="@((x) => selectionType = (SelectionType)Enum.Parse(typeof(SelectionType), x.Value.ToString()))">
+    @foreach (var option in Enum.GetValues(typeof(SelectionType)))
+                    {
+                        <option value="@option">@option</option>
+                    }
+</select>
+<div>Last Clicked:</div> @selected?.Id
+<br />
+<p>Selected:</p> @(selectedItems.Any() ? selectedItems.Select(x => x.Id).Aggregate((c, n) => $"{c},{n}") : "None")
+
+<Table TableItem="IdentityUser" Items="listme" PageSize="10" SelectionType="selectionType" RowClickAction="RowClick" SelectedItems="selectedItems">
+    <Column TableItem="IdentityUser" Title="Full Name" Field="@(x => x.UserName)" Sortable="true" Filterable="true" Width="20%" />
+    <Column TableItem="IdentityUser" Title="ID" Field="@(x => x.Id)" Sortable="true" Filterable="true" Width="20%" />
+    <Column TableItem="IdentityUser" Title="Email Confirmed" Field="@(x => x.EmailConfirmed)" Sortable="true" Filterable="true" Width="10%" />
+    <Pager ShowPageNumber="true" ShowTotalCount="true" />
+</Table>
+}
+
+
+@code{
+    private List<IdentityUser> listme;
+    private List<IdentityUser> tableList;
+    private SelectionType selectionType;
+    private IdentityUser selected;
+
+    private List<IdentityUser> selectedItems = new List<IdentityUser>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listme =  UserManager.Users.ToList();
+        IQueryable<IdentityUser> RedUsers = UserManager.Users;
+        //tableList = identUtilService.GetUserListAsync();
+
+    }
+    public void RowClick(IdentityUser data)
+    {
+        selected = data;
+        StateHasChanged();
+    }
+
+}

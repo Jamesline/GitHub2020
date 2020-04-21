@@ -1,0 +1,76 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Identity
+@using BlazorTable
+@using RedDogAdmin.Areas.Identity
+@using RedDogAdmin.Models
+@using RedDogAdmin.Components
+
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IdentUtilService identUtilService
+@inject NavigationManager NavigationManager
+
+<h1>User Admin</h1>
+@if (tableList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @*<RedDogUserDisplay tableDisplay=tableList />*@
+    <Table TableItem="RedDogUser" Items="tableList" PageSize="10" SelectionType="selectionType" RowClickAction="RowClick" SelectedItems="selectedItems">
+        <Column TableItem="RedDogUser" Title="Full Name" Field="@(x => x.Username)" Sortable="true" Filterable="true" Width="20%" />
+        <Column TableItem="RedDogUser" Title="ID" Field="@(x => x.Id)" Sortable="true" Filterable="true" Width="20%" />
+        <Column TableItem="RedDogUser" Title="Email Confirmed" Field="@(x => x.EmailConfirmed)" Sortable="true" Filterable="true" Width="10%" />
+        <Pager ShowPageNumber="true" ShowTotalCount="true" />
+    </Table>
+    <div>Selected:</div> @(selectedItems.Any() ? selectedItems.Select(x => x.Id).Aggregate((c, n) => $"{c},{n}") : "None")
+    <br />
+    @if (selected != null)
+    {
+    <button @onclick="DeleteId">Delete Selected</button>
+    }
+    <br />
+    @ResultMessage
+}
+
+
+@code{
+
+    private List<RedDogUser> tableList;
+    private SelectionType selectionType = SelectionType.Single;
+    private RedDogUser selected;
+    private List<RedDogUser> selectedItems = new List<RedDogUser>();
+    private string ResultMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        tableList = identUtilService.GetUserListAsync(UserManager);
+    }
+
+    public void RowClick(RedDogUser data)
+    {
+        selected = data;
+        StateHasChanged();
+    }
+    public void DeleteId()
+    {
+        try
+        {
+            var Id = selected.Id;
+            var result = identUtilService.DeleteRedDogUser(Id, UserManager);
+            if (result == true)
+            {
+
+                StateHasChanged();
+                NavigationManager.NavigateTo("/DeleteConfirmed");
+            }
+        }
+        catch (Exception)
+        {
+            StateHasChanged();
+            ResultMessage = "Nothing selected to delete.";
+        }
+    }
+}
